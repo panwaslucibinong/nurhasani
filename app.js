@@ -4,8 +4,6 @@ const cookieParser = require('cookie-parser');
 const { generateUniqueId, cekIp, ambilWaktuIndonesia } = require('./utils/absen')
 const { newNoLhp, generateDocument } = require('./utils/lhp')
 const fs = require('fs');
-const libre = require('libreoffice-convert');
-
 
 require('./utils/db')
 const Absen = require('./model/absen')
@@ -199,35 +197,12 @@ app.get('/lhp/delete/:id', async (req, res) => {
 });
 
 app.get('/download-document/:fileName', (req, res) => {
-    const outputFilePath = 'output.pdf'; // Path to the converted .pdf file
+    const filePath = 'output.docx';
     const fileName = req.params.fileName;
-
-    const inputFilePath = 'output.docx'; // Path to your input .docx file
-
-    // Baca file .docx secara asinkron
-    fs.readFile(inputFilePath, (readErr, data) => {
-        if (readErr) {
-            console.error('Error reading input file:', readErr);
-            res.status(500).send('Error reading input file');
-        } else {
-            // Konversi .docx ke .pdf
-            libre.convert(data, '.pdf', undefined, (err, result) => {
-                if (err) {
-                    console.error('Error converting document:', err);
-                    res.status(500).send('Error converting document');
-                } else {
-                    // Tulis file .pdf yang dihasilkan
-                    fs.writeFileSync(outputFilePath, result);
-
-                    // Download file .pdf
-                    res.download(outputFilePath, `LHP ${fileName}.pdf`, (downloadErr) => {
-                        if (downloadErr) {
-                            console.error('Error downloading document:', downloadErr);
-                            res.status(500).send('Error downloading document');
-                        }
-                    });
-                }
-            });
+    res.download(filePath, `LHP ${fileName}.docx`, (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error downloading document');
         }
     });
 });
