@@ -1,0 +1,16 @@
+<div class="row mb-4">
+    <% dataKu.forEach((dataku, i) => { %>
+        <div class="col-sm-3 mb-3">
+          <div class="card catagory-card h-100  shadow-sm">
+            <div class="card-body text-center">
+                <img src="<%= dataku.foto %>" class="rounded-circle img-fluid mb-2" style="width: 100px; background: linear-gradient(to bottom, #FFE4A7, #F1C27B);" />
+              <h6 class="card-title"><strong><%= dataku.nama %></strong></h6>
+              <p class="card-text"><%= dataku.jabatan %></p>
+              <div>
+                  <a href="https://api.whatsapp.com/send?phone=<%= dataku.nomorHp %>" class="btn btn-warning"><i class="bi bi-whatsapp"></i><strong> Hubungi</strong></a>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% }); %>
+</div>

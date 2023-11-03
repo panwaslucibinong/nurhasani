@@ -1,0 +1,79 @@
+    <form method="POST" action="/absen">
+        <div class="container mt-5 mb-5">
+            <div style="justify-content: center; text-align: center;">
+                <div class="input-box-camera mb-3" style="width: 170px; height: 170px; border-radius: 90%; overflow: hidden; margin-left: auto; margin-right: auto;    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);">
+                    <video id="camera" width="170px" autoplay=""></video>
+                    <img id="capturedImage" width="100px" height="100px" style="display: none;">
+                </div>
+                <div class="d-grid gap-2 col-8 mx-auto">
+                    <% if (ipStatus !== true) { %>
+                        <p class="mb-3" style="color: red;">Anda Sedang Tidak Dikantor</p>
+                    <% } %>
+                    <% if(alertMessage === 'Sudah Absen'){ %>
+                        <script>
+                            Swal.fire({
+                                icon: 'warning',
+                                title: '<%= alertMessage %>',
+                                text: 'Anda sudah melakukan absen hari ini',
+                                confirmButtonColor: '#F1C27B',
+                                confirmButtonText: 'OK',
+                            });
+                        </script>
+                    <% } %>
+                </div>
+            </div>
+            <div class="d-grid gap-2 col-10 mx-auto">
+                <h3 style="text-align: center;"><%= dataUser.nama_lengkap %></h3>
+                <h8 class="mb-3" style="text-align: center;"><%= dataUser.jabatan %></h8>
+
+                <input type="hidden" name="nama_lengkap" value="<%= dataUser.nama_lengkap %>">
+                <input type="hidden" name="jabatan" value="<%= dataUser.jabatan %>">
+                <input type="hidden" name="hari_tanggal" value="<%= waktuAbsen %>">
+                <input type="hidden" name="jam_absen" value="<%= jamAbsen %>">
+
+                <div class="form-outline">
+                    <textarea class="form-control" name="hasil_kerja" placeholder="Rencana kerja hari ini..." id="textAreaExample" rows="2" required></textarea>
+                </div>
+
+                <button type="submit" class="custom-button" id="submitButton" <% if(alertMessage !== '') { %> disabled <% } %><strong> Absen Sekarang</strong></button>
+            </div>
+        </div>
+    </form>
+    <script>
+        document.querySelector('textarea').addEventListener('input', function () {
+            const textareaValue = this.value.trim();
+            const submitButton = document.getElementById('submitButton');
+
+            if (textareaValue === "" || alertMessage === 'Sudah Absen') {
+                submitButton.setAttribute('disabled', 'true');
+            } else {
+                submitButton.removeAttribute('disabled');
+            }
+        });
+
+        const video = document.getElementById('camera');
+        const capturedImage = document.createElement('img');
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+            });
+
+        document.querySelector('button[type="submit"]').addEventListener('click', async (e) => {
+            e.preventDefault(); // Prevent the form from submitting immediately
+
+            const canvas = document.createElement('canvas');
+            canvas.width = 100;
+            canvas.height = 100;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, 0, 0, 100, 100);
+
+            const takeFotoInput = document.createElement('input');
+            takeFotoInput.type = 'hidden';
+            takeFotoInput.name = 'foto_absen';
+            takeFotoInput.value = canvas.toDataURL('image/jpeg');
+            document.querySelector('form').appendChild(takeFotoInput);
+            document.querySelector('form').submit();
+            await alertSuksesRedirect('<%= dataUser.nama_lengkap %>','Berhasil Absen', '/absen/lihat')
+        });
+    </script>

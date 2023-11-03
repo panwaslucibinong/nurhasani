@@ -1,0 +1,22 @@
+
+<div class="card-body text-center">
+  <div class="mt-3 mb-3">
+    <img src="<%= dataAbsens.foto_absen %>"
+      class="rounded-circle img-fluid" style="width: 150px;" />
+  </div>
+  <div>
+    <h4 class="mb-1"><%= dataAbsens.nama_lengkap %></h4>
+    <span class="text-muted"><%= dataAbsens.jabatan %></span><br>
+    <span class="badge bg-secondary"><%= dataAbsens.hari_tanggal %></span><br>
+    <span class="badge bg-secondary"><%= dataAbsens.jam_absen %> WIB</span>
+  </div>
+  <div class="container mb-3 mt-3">                
+    <label for=""><strong>Rencana Kerja</strong></label>
+    <div class="card">
+      <div class="card-body text-center">
+        <p class="card-text" style="text-align: justify;"><%= dataAbsens.hasil_kerja %></p>
+      </div>
+    </div>                  
+  </div>
+  </div>
+</div>

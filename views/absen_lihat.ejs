@@ -1,0 +1,70 @@
+<table class="table align-middle mb-0 bg-white">
+    <thead>
+        <th colspan="1">
+            <div class="btn-group">
+                <button id="filterDesaBtn" class="btn dropdown-toggle btn-sm me-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-funnel"></i> <span id="selectedUser">Filter</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" data-user="Semua">Semua</a>
+                    <% dataUser.forEach((dataUsers, i) => { %>
+                    <a class="dropdown-item" href="#" data-user="<%= dataUsers.nama_lengkap %>"><%= dataUsers.nama_lengkap %></a>
+                    <% }) %>
+                </div>
+            </div>
+        </th>
+        <th colspan="3"><strong>DATA ABSEN PIKET</strong></th>
+        <tr>
+            <th>Pelaksana</th>
+            <th>Waktu</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% 
+            dataAbsens.forEach((dataku, i) => { %>
+                <tr data-user="<%= dataku.nama_lengkap %>">
+                    <td>
+                        <div class="d-flex align-items-center">
+                        <img
+                            src="<%= dataku.foto_absen %>"
+                            class="rounded-circle"
+                            alt=""
+                        />
+                        <div class="ms-2">
+                            <p class="fw-bold mb-0"><%= dataku.nama_lengkap %></p>
+                            <p class="text-muted mb-0"><%= dataku.jabatan %></p>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="text-muted mb-0"><%= dataku.jam_absen %> WIB</p>
+                        <p class="text-muted mb-0"><%= dataku.hari_tanggal.split("|")[0] %></p>
+                    </td>
+                    <td>
+                        <a href="/absen/detail/<%= dataku.id %>">
+                            <span class="badge bg-success"><i class="bi bi-eye-fill"></i> Lihat</span>
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>        
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('.dropdown-item').click(function (e) {
+            e.preventDefault();
+            var selectedUser1 = $(this).data('user');
+            $('#selectedUser').text(selectedUser1 === "Semua" ? "Filter" : selectedUser1);
+            $('tbody tr').each(function () {
+                var selectedJabatan = selectedUser1
+                var userku1 = $(this).data('user');
+                if (userku1 === selectedJabatan || selectedUser1 === "Semua") {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
