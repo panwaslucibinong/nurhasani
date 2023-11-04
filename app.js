@@ -11,6 +11,7 @@ const LaporanHasilPengawasan = require('./model/laporan_hasil_pengawasan')
 const Users = require('./model/users')
 const Home = require('./model/home')
 const LhpConfig = require('./model/lhp_config')
+const Berita = require('./model/berita')
 
 const app = express();
 
@@ -24,10 +25,23 @@ app.use(cookieParser());
 
 app.get('/', async (req, res) => {
     const home_Data = await Home.findOne()
+    const berita_data = await Berita.find()
+    berita_data.reverse();
     res.render('home', {
         layout: 'layouts/main-layout',
         title: 'Home',
         home_Data,
+        berita_data
+    });
+});
+
+app.get('/berita/detail/:id', async (req, res) => {
+    const idBerita = req.params.id
+    const dataBerita = await Berita.findOne({ _id: idBerita });
+    res.render('berita_detail', {
+        layout: 'layouts/main-layout',
+        title: 'Berita Detail',
+        dataBerita
     });
 });
 
