@@ -28,40 +28,16 @@
 
 <h6 class="text-uppercase fw-bold text-center text-muted mt-4">BERITA TERBARU...</h6>
 <div class="row row-cols-1 row-cols-md-3 g-2">
-  <!-- <% for (let i = 0; i < 2; i++) { %>
-    <a href="/" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
+  <% for (let i = 0; i < 3; i++) { %>
+    <a href="/berita/detail/<%= berita_data[i].id %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
       <div class="col">
-        <img src="<%= home_Data.banner[i].banner_Link%>" class="card-img-top mb-2" alt=""/>
-        <span class="badge bg-success mb-1">Kamis, 12 Oktober 2023</span>
-        <h6 class="text-uppercase fw-bold text-muted">Isu Lingkungan Hidup Jadi Prioritas Tema Debat</h6>
-        <p class="text-muted mb-2" style="text-align: justify;">Jakarta, kpu.go.id - Anggota KPU Mochammad Afifuddin memastikan isu</p>
+        <img src="<%= berita_data[i].thumbnail %>" class="card-img-top mb-2" alt=""/>
+        <span class="badge bg-success mb-1"><%= berita_data[i].waktu %></span>
+        <h6 class="text-uppercase fw-bold text-muted"><%= berita_data[i].title %></h6>
+        <p class="text-muted mb-2" style="text-align: justify;"><%= berita_data[i].deskripsi.substring(0, 150) %>...</p>
       </div>
     </a>
-  <% } %>   -->
-    <a href="/" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
-      <div class="col">
-        <img src="https://www.kpu.go.id/images/1698982670watermark%20(3).png" class="card-img-top mb-2" alt=""/>
-        <span class="badge bg-success mb-1">Senin, 12 Oktober 2023</span>
-        <h6 class="text-uppercase fw-bold text-muted">Isu Lingkungan Hidup Jadi Prioritas Tema Debat</h6>
-        <p class="text-muted mb-2" style="text-align: justify;">Jakarta, kpu.go.id - Anggota KPU Mochammad Afifuddin memastikan isu lingkungan hidup akan masuk sebagai salah satu isu yang diprioritaskan menjadi pokok bahasan tema debat...</p>
-      </div>
-    </a> 
-    <a href="/" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
-      <div class="col">
-        <img src="https://www.kpu.go.id/images/1698982204watermark%20(2).png" class="card-img-top mb-2" alt=""/>
-        <span class="badge bg-success mb-1">Selasa, 13 Oktober 2023</span>
-        <h6 class="text-uppercase fw-bold text-muted">Antisipasi Kerawanan Pemilu 2024</h6>
-        <p class="text-muted mb-2" style="text-align: justify;">Jakarta, kpu.go.id – Hari Pemungutan Suara Pemilu 2024 tersisa 103 hari. Komisi Pemilihan Umum (KPU) terus melakukan beragam kesiapan baik logistik, data pemilih hingga penetapan calon yang akan bertarung...</p>
-      </div>
-    </a> 
-    <a href="/" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
-      <div class="col">
-        <img src="https://www.kpu.go.id/images/1698892423Tak%20Hanya%20Berpartisipasi.png" class="card-img-top mb-2" alt=""/>
-        <span class="badge bg-success mb-1">Rabu, 14 Oktober 2023</span>
-        <h6 class="text-uppercase fw-bold text-muted">Tak Hanya Berpartisipasi Jadi Pemilih, KPU Ajak Mahasiswa Partisipasi Sebagai Anggota KPPS</h6>
-        <p class="text-muted mb-2" style="text-align: justify;">JJakarta, kpu.go.id - Sekretaris Jenderal KPU Bernad Dermawan Sutrisno menerima audiensi Studi Ekskursi oleh Departemen Hubungan Eksternal dan Komunikasi (HEKSAKOM)...</p>
-      </div>
-    </a> 
+  <% } %>  
 </div>
 
 <footer class="text-center text-lg-start bg-white text-muted">
