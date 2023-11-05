@@ -33,7 +33,14 @@
     <a href="<%= berita_data[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
       <div class="col">
         <img src="<%= berita_data[i].thumbnail %>" class="card-img-top mb-2" alt=""/>
-        <span class="badge bg-success mb-1"><%= berita_data[i].pubDate.split('T')[0] %></span>
+        
+        <% function formatDate(isoDate) {
+          const pubDate = new Date(isoDate);
+          const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' };
+          return pubDate.toLocaleDateString('id-ID', options);
+        } %>
+    
+        <span class="badge bg-success mb-1"><%= formatDate(berita_data[i].pubDate) %></span>
         <h6 class="text-uppercase fw-bold text-muted"><%= berita_data[i].title %></h6>
         <p class="text-muted mb-2" style="text-align: justify;"><%= berita_data[i].description %></p>
       </div>
