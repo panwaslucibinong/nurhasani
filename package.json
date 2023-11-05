@@ -6,7 +6,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "@pspdfkit/nodejs": "^0.0.3",
+    "cheerio": "^1.0.0-rc.12",
     "cookie-parser": "^1.4.6",
     "docxtemplater": "^3.39.2",
     "ejs": "^3.1.9",
