@@ -3,7 +3,7 @@ const expressLayouts = require('express-ejs-layouts');
 const cookieParser = require('cookie-parser');
 const { generateUniqueId, cekIp, ambilWaktuIndonesia } = require('./utils/absen')
 const { newNoLhp, generateDocument } = require('./utils/lhp')
-const { beritaApi } = require('./utils/berita')
+const { beritaApi, beritaKpu, beritaBws } = require('./utils/berita')
 const fs = require('fs');
 
 require('./utils/db')
@@ -27,13 +27,17 @@ app.use(cookieParser());
 app.get('/', async (req, res) => {
     const home_Data = await Home.findOne()
     // const berita_data = await Berita.find()
-    const berita_data = await beritaApi(`https://api-berita-indonesia.vercel.app/antara/politik/`)
     // berita_data.reverse();
+    const berita_data = await beritaApi(`https://api-berita-indonesia.vercel.app/antara/politik/`)
+    const berita_kpu = await beritaKpu()
+    const berita_bws = await beritaBws()
     res.render('home', {
         layout: 'layouts/main-layout',
         title: 'Home',
         home_Data,
-        berita_data
+        berita_data,
+        berita_kpu,
+        berita_bws
     });
 });
 
