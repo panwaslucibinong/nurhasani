@@ -260,6 +260,15 @@ app.delete('/user', async (req, res) => {
     res.redirect('/user');
 });
 
+app.get('/reset', async (req, res) => {
+    try {
+        res.clearCookie('deviceId');
+        res.send("Berhasil Reset Akun")
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Terjadi kesalahan saat memproses permintaan.');
+    }
+});
 
 app.listen(process.env.PORT || 3000, () => {
     console.clear();
