@@ -22,7 +22,6 @@
                 <table class="table align-middle mb-0 bg-white">
                     <thead>
                         <tr>
-                            <th>Pelaksana</th>
                             <th>Nomor</th>
                             <th>Dibuat</th>
                             <th>Aksi</th>
@@ -31,10 +30,6 @@
                     <% 
                         lhpUser.forEach((dataku, i) => { %>
                         <tr data-user="<%= dataku.pelaksana_tugas %>">
-                            <td>
-                                <p class="fw-bold mb-0"><%= dataku.pelaksana_tugas %></p>
-                                <p class="text-muted mb-0"><%= dataku.jabatan %></p>
-                            </td>
                             <td>
                                 <p class="text-muted mb-0"><%= dataku.no_lhp %></p>
                                 <p class="text-muted mb-0"><%= dataku.tahapan %></p>
