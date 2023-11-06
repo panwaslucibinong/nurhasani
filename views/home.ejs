@@ -1,5 +1,5 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner mb-4">
+  <div class="carousel-inner mb-3">
     <div class="carousel-item active">
       <img src="img/slide1.png" class="d-block w-100 rounded" alt="Banner Utama">
     </div>
@@ -26,31 +26,9 @@
   <% }) %>
 </div>
 
-<h6 class="text-uppercase fw-bold text-center text-muted mt-4">BERITA TERBARU...</h6>
+<h6 class="text-uppercase fw-bold text-center text-muted mt-3">BERITA TERBARU...</h6>
 <div class="row row-cols-1 row-cols-md-3 g-2">
-  <% for (let i = 0; i < 1; i++) { %>
-    <!-- <a href="/berita/detail/<%= berita_data[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';"> -->
-    <a href="<%= berita_bws[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
-      <div class="col">
-        <img src="<%= berita_bws[i].thumbnail %>" class="card-img-top mb-2" alt="" style="height: auto; width: 100%; aspect-ratio: 5 / 2.5;">
-        <span class="badge bg-success mb-1"><%= berita_bws[i].pubDate %></span>
-        <h6 class="text-uppercase fw-bold text-muted"><%= berita_bws[i].title %></h6>
-        <!-- <p class="text-muted mb-2" style="text-align: justify;"><%= berita_bws[i].description %></p> -->
-      </div>
-    </a>
-  <% } %>  
-  <% for (let i = 0; i < 1; i++) { %>
-    <!-- <a href="/berita/detail/<%= berita_data[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';"> -->
-    <a href="<%= berita_kpu[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
-      <div class="col">
-        <img src="<%= berita_kpu[i].thumbnail %>" class="card-img-top mb-2" alt="" style="height: auto; width: 100%; aspect-ratio: 5 / 2.5;">
-        <span class="badge bg-success mb-1"><%= berita_kpu[i].pubDate %></span>
-        <h6 class="text-uppercase fw-bold text-muted"><%= berita_kpu[i].title %></h6>
-        <!-- <p class="text-muted mb-2" style="text-align: justify;"><%= berita_kpu[i].description %></p> -->
-      </div>
-    </a>
-  <% } %>  
-  <% for (let i = 0; i < 1; i++) { %>
+  <% for (let i = 0; i < 2; i++) { %>
     <!-- <a href="/berita/detail/<%= berita_data[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';"> -->
     <a href="<%= berita_data[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
       <div class="col">
@@ -66,7 +44,29 @@
         <!-- <p class="text-muted mb-2" style="text-align: justify;"><%= berita_data[i].description %></p> -->
       </div>
     </a>
+  <% } %> 
+  <% for (let i = 0; i < 2; i++) { %>
+    <!-- <a href="/berita/detail/<%= berita_data[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';"> -->
+    <a href="<%= berita_bws[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
+      <div class="col">
+        <img src="<%= berita_bws[i].thumbnail %>" class="card-img-top mb-2" alt="" style="height: auto; width: 100%; aspect-ratio: 5 / 2.5;">
+        <span class="badge bg-success mb-1"><%= berita_bws[i].pubDate %></span>
+        <h6 class="text-uppercase fw-bold text-muted"><%= berita_bws[i].title %></h6>
+        <!-- <p class="text-muted mb-2" style="text-align: justify;"><%= berita_bws[i].description %></p> -->
+      </div>
+    </a>
   <% } %>  
+  <% for (let i = 0; i < 2; i++) { %>
+    <!-- <a href="/berita/detail/<%= berita_data[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';"> -->
+    <a href="<%= berita_kpu[i].link %>" class="border-bottom mb-1" onmouseover="this.style.backgroundColor='#EBF1F1'" onmouseout="this.style.backgroundColor='';">
+      <div class="col">
+        <img src="<%= berita_kpu[i].thumbnail %>" class="card-img-top mb-2" alt="" style="height: auto; width: 100%; aspect-ratio: 5 / 2.5;">
+        <span class="badge bg-success mb-1"><%= berita_kpu[i].pubDate %></span>
+        <h6 class="text-uppercase fw-bold text-muted"><%= berita_kpu[i].title %></h6>
+        <!-- <p class="text-muted mb-2" style="text-align: justify;"><%= berita_kpu[i].description %></p> -->
+      </div>
+    </a>
+  <% } %>   
 </div>
 
 <footer class="text-center text-lg-start bg-white text-muted">
@@ -74,9 +74,9 @@
     <div class="container text-center text-md-start mt-2">
       <div class="row mt-3">
         <div class="col-md-6 col-lg-6 col-xl-6 mx-auto mb-4">
-          <h6 class="text-uppercase fw-bold mb-2">Panwaslu Kecamatan Cibinong</h6>
+          <!-- <h6 class="text-uppercase fw-bold mb-2">Panwaslu Kecamatan Cibinong</h6> -->
           <p class="card-text" style="text-align: justify;">
-            Pengawasan tanpa kompromi, guna mewujudkan pemilu yang damai dan berintegritas, serta mencegah pelanggaran untuk menjaga kehormatan demokrasi.
+            Bawaslu adalah lembaga penyelenggara Pemilu yang bertugas mengawasi penyelenggaraan Pemilu di seluruh wilayah Negara Kesatuan Republik Indonesia.
           </p>
         </div>
         <div class="col-md-6 col-lg-6 col-xl-6 mx-auto mb-4">
