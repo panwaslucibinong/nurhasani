@@ -1,0 +1,111 @@
+
+<div class="card-body text-center">
+    <div class="mt-3 mb-4">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+        class="rounded-circle img-fluid" style="width: 70px;" />
+    </div>
+    <h6 class="mb-2"><%= dataUser.nama_lengkap %></h6>
+    <p class="text-muted"><%= dataUser.jabatan %></p>      
+    </div>
+  </div>  
+    <div class="container mt-2">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="riwayat-tab" data-toggle="tab" href="#riwayat" role="tab" aria-controls="riwayat" aria-selected="true">LHP</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profil-tab" data-toggle="tab" href="#profil" role="tab" aria-controls="profil" aria-selected="false">ABSEN</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="riwayat" role="tabpanel" aria-labelledby="riwayat-tab">
+                <table class="table align-middle mb-0 bg-white">
+                    <thead>
+                        <tr>
+                            <th>Pelaksana</th>
+                            <th>Nomor</th>
+                            <th>Dibuat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <% 
+                        lhpUser.forEach((dataku, i) => { %>
+                        <tr data-user="<%= dataku.pelaksana_tugas %>">
+                            <td>
+                                <p class="fw-bold mb-0"><%= dataku.pelaksana_tugas %></p>
+                                <p class="text-muted mb-0"><%= dataku.jabatan %></p>
+                            </td>
+                            <td>
+                                <p class="text-muted mb-0"><%= dataku.no_lhp %></p>
+                                <p class="text-muted mb-0"><%= dataku.tahapan %></p>
+                            </td>
+                            <td>
+                                <p class="text-muted mb-0"><%= dataku.waktu_dibuat %></p>
+                            </td>
+                            <td>
+                                <a>
+                                    <span class="badge bg-secondary" id="editButton" style="cursor: pointer;">
+                                        <i class="bi bi-pencil-square"></i> <span style="font-style: normal;"></span>
+                                    </span>
+                                </a>
+                                <a href="/lhp/<%= dataku.id %>">
+                                    <span class="badge bg-success" id="lihatButton">
+                                        <i class="bi bi-eye-fill"></i> <span style="font-style: normal;"></span>
+                                    </span>
+                                </a>
+                                <a href="/download-document/<%= dataku.no_lhp.split('/')[0] %> <%= dataku.jabatan.split('PKD ')[1] %>" onclick="alertSukses('Berhasil', 'Unduhan Dimulai')">
+                                    <span class="badge bg-success" id="lihatButton">
+                                        <i class="bi bi-download"></i> <span style="font-style: normal;"></span>
+                                    </span>
+                                </a>   
+                                <form method="POST" action="/user?_method=DELETE" class="d-inline" id="deleteForm">
+                                    <input type="hidden" name="id" value="<%=dataku._id %>">
+                                    <span class="badge bg-danger" id="deleteButton" style="cursor: pointer;">
+                                        <i class="bi bi-trash-fill"></i> <span style="font-style: normal;"></span>
+                                    </span>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                  </table>
+            </div>
+            <div class="tab-pane fade" id="profil" role="tabpanel" aria-labelledby="profil-tab">
+                <table class="table align-middle mb-0 bg-white">
+                    <thead>
+                        <tr>
+                            <th>Pelaksana</th>
+                            <th>Waktu</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <% 
+                        absenUser.forEach((dataku, i) => { %>
+                        <tr data-user="<%= dataku.nama_lengkap %>">
+                            <td>
+                                <div class="d-flex align-items-center">
+                                <img
+                                    src="<%= dataku.foto_absen %>"
+                                    class="rounded-circle"
+                                    alt=""
+                                />
+                                <div class="ms-2">
+                                    <p class="fw-bold mb-0"><%= dataku.nama_lengkap %></p>
+                                    <p class="text-muted mb-0"><%= dataku.jabatan %></p>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-muted mb-0"><%= dataku.jam_absen %> WIB</p>
+                                <p class="text-muted mb-0"><%= dataku.hari_tanggal.split("|")[0] %></p>
+                            </td>
+                            <td>
+                                <a href="/absen/<%= dataku.id %>">
+                                    <span class="badge bg-success"><i class="bi bi-eye-fill"></i> Lihat</span>
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                  </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
