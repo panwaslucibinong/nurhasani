@@ -5,10 +5,10 @@
                 <button id="filterDesaBtn" class="btn dropdown-toggle btn-sm me-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-funnel"></i> <span id="selectedUser">Filter</span>
                 </button>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" style="font-size: 1.2vmax;">
                     <a class="dropdown-item" href="#" data-user="Semua">Semua</a>
                     <% dataUser.forEach((dataUsers, i) => { %>
-                    <a class="dropdown-item" style="font-size: 1.2vmax;" href="#" data-user="<%= dataUsers.nama_lengkap %>"><%= dataUsers.nama_lengkap %></a>
+                    <a class="dropdown-item" href="#" data-user="<%= dataUsers.nama_lengkap %>"><%= dataUsers.nama_lengkap %></a>
                     <% }) %>
                 </div>
             </div>
