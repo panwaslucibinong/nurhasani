@@ -207,7 +207,7 @@ app.get('/lhp', async (req, res) => {
 
 app.get('/lhp/:id', async (req, res) => {
     const dataLHP = await LaporanHasilPengawasan.findOne({ _id: req.params.id });
-    await generateDocument(dataLHP)
+    //await generateDocument(dataLHP)
     res.render('lhp_detail', {
         layout: 'layouts/main-layout',
         title: 'Lihat LHP',
