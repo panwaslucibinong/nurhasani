@@ -48,11 +48,6 @@
                                         <i class="bi bi-eye-fill"></i> <span style="font-style: normal;"></span>
                                     </span>
                                 </a>
-                                <a href="/download-document/<%= dataku.no_lhp.split('/')[0] %> <%= dataku.jabatan.split('PKD ')[1] %>" onclick="alertSukses('Berhasil', 'Unduhan Dimulai')">
-                                    <span class="badge bg-success" id="lihatButton">
-                                        <i class="bi bi-download"></i> <span style="font-style: normal;"></span>
-                                    </span>
-                                </a>   
                                 <form method="POST" action="/user?_method=DELETE" class="d-inline" id="deleteForm">
                                     <input type="hidden" name="id" value="<%=dataku._id %>">
                                     <span class="badge bg-danger" id="deleteButton" style="cursor: pointer;">
