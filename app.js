@@ -197,6 +197,7 @@ app.post('/lhp', async (req, res) => {
 app.get('/lhp', async (req, res) => {
     const dataUser = await Users.find()
     const dataLHP = await LaporanHasilPengawasan.find();
+    dataLHP.reverse();
     res.render('lhp_lihat', {
         layout: 'layouts/main-layout',
         title: 'Data LHP',
