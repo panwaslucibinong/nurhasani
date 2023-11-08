@@ -1,0 +1,58 @@
+{
+    "banner": [
+        {
+            "banner_Title": "Lihat LHP",
+            "banner_Link": "img/slide1.png"
+        },
+        {
+            "banner_Title": "Lihat LHP",
+            "banner_Link": "img/slide2.png"
+        }
+    ],
+    "card": [
+        {
+            "card_Title":"Lihat LHP",
+            "card_Icon":"bi bi-database-fill-check",
+            "card_Link":"/lhp-lihat"
+        },
+        {
+            "card_Title":"Lihat Absen",
+            "card_Icon":"bi bi-clipboard2-data-fill",
+            "card_Link":"/absen-lihat"
+        },
+        {
+            "card_Title":"Jadwal Piket",
+            "card_Icon":"bi bi-calendar-check",
+            "card_Link":"/jadwal-piket"
+        },
+        {
+            "card_Title":"Twibbon",
+            "card_Icon":"bi bi-person-square",
+            "card_Link":"https://www.twibbonize.com/panwaslucibinong"
+        },
+        {
+            "card_Title":"JDIH Bawaslu",
+            "card_Icon":"bi bi-book",
+            "card_Link":"https://jdih.bawaslu.go.id/"
+        },
+        {
+            "card_Title":"JDIH KPU",
+            "card_Icon":"bi bi-book",
+            "card_Link":"https://jdih.kpu.go.id/"
+        }
+    ],
+    "kontak": [
+        {
+            "kontak_Title":"Kp Ankola Desa Sukajadi Kec. Cibinong",
+            "kontak_Icon":"bi bi-house-fill me-3 text-secondary"
+        },
+        {
+            "kontak_Title":"panwaslukec.cibinong@gmail.com",
+            "kontak_Icon":"bi bi-envelope me-3 text-secondary"
+        },
+        {
+            "kontak_Title":"+6285722669231",
+            "kontak_Icon":"bi bi-telephone-fill me-3 text-secondary"
+        }
+    ]
+}

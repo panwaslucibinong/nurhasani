@@ -1,0 +1,38 @@
+<table class="table table-hover mt-3">
+    <thead>
+        <th colspan="6" style="font-size: 1.2vmax;"><strong>JADWAL PIKET</strong></th>
+        <tr>
+            <th class="col-md-1">Senin</th>
+            <th class="col-md-1">Selasa</th>
+            <th class="col-md-1">Rabu</th>
+            <th class="col-md-1">Kamis</th>
+            <th class="col-md-1">Jum'at</th>
+            <th class="col-md-1">Sabtu</th>
+        </tr>
+    </thead>
+    <tbody>
+<% 
+        jadwalPkt.forEach((dataku, i) => { %>
+            <tr data-jabatan="<%= dataku %>">
+                <td>
+                    <%= dataku['SENIN'] %>
+                </td>
+                <td>
+                    <%= dataku['SELASA'] %>
+                </td>
+                <td>
+                    <%= dataku['RABU'] %>
+                </td>
+                <td>
+                    <%= dataku['KAMIS'] %>
+                </td>
+                <td>
+                    <%= dataku["JUM'AT"] %>
+                </td>
+                <td>
+                    <%= dataku["SABTU"] %>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
