@@ -77,9 +77,8 @@ app.post('/register', async (req, res) => {
 //ABSEN
 app.get('/absen/add', async (req, res) => {
     try {
-        // const myIP = req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-        // const ipStatus = await cekIp(myIP);
-        const ipStatus = true;
+        const myIP = req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        const ipStatus = await cekIp(myIP);
         if (ipStatus) {
             if (!req.cookies.deviceId) {
                 res.redirect('/register');
