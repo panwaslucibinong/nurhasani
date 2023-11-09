@@ -2,7 +2,7 @@ const fs = require('fs');
 const { DateTime } = require('luxon');
 
 const cekIp = async (myIP) => {
-    const allowedIp = 'AS23693 PT. Telekomunikasi Selular'
+    const allowedIp = 'AS7713 PT Telekomunikasi Indonesia'
     try {
         const response = await fetch(`https://ipinfo.io/${myIP}/json`);
         const data = await response.json();
