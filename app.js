@@ -34,15 +34,11 @@ app.get('/', async (req, res) => {
     // const berita_data = await Berita.find()
     // berita_data.reverse();
     const berita_data = await beritaApi(`https://api-berita-indonesia.vercel.app/antara/politik/`)
-    const berita_kpu = await beritaKpu()
-    const berita_bws = await beritaBws()
     res.render('home/home', {
         layout: 'layouts/main-layout',
         title: 'Home',
         home_Data,
-        berita_data,
-        berita_kpu,
-        berita_bws
+        berita_data
     });
 });
 
