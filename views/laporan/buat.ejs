@@ -136,6 +136,7 @@ fileInput.addEventListener('change', function() {
     reader.readAsDataURL(selectedFile);
   }
 });
+function tampilkanPesanSukses() {
   const tahapanSelect = document.getElementById('tahapan');
   const bentukPengawasanSelect = document.getElementById('bentuk_pengawasan');
   const tujuanPengawasanInput = document.getElementById('tujuan_pengawasan');
@@ -154,4 +155,5 @@ fileInput.addEventListener('change', function() {
   ) {
     alertSuksesRedirect('<%= dataUser.nama_lengkap %>','Laporan Terkirim', '/user')
   }
+}
 </script>
