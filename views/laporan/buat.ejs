@@ -153,7 +153,7 @@ function tampilkanPesanSukses() {
     uraianPengawasanTextarea.value.trim() !== '' &&
     customFileInput.files[0]
   ) {
-    alertSuksesRedirect('<%= dataUser.nama_lengkap %>','Laporan Terkirim', '/user')
+      window.location.href = '/user';
   }
 }
 </script>
