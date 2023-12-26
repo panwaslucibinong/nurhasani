@@ -6,6 +6,7 @@ const { generateUniqueId, cekIp, ambilWaktuIndonesia } = require('./utils/absen'
 const { newNoLhp, generateDocument } = require('./utils/lhp')
 const { beritaApi, beritaKpu, beritaBws } = require('./utils/berita')
 const fs = require('fs');
+const path = require('path'); 
 
 require('./utils/db')
 const Absen = require('./model/absen')
@@ -270,6 +271,24 @@ app.get('/user', async (req, res) => {
 app.delete('/user', async (req, res) => {
     await LaporanHasilPengawasan.deleteOne({ _id: req.body.id_hapus });
     res.redirect('/user');
+});
+
+app.get('/ptps', (req, res) => {
+    const filePath = 'ptps.pdf';
+    const fileName = 'Syarat PTPS.pdf';
+    const fullPath = path.join(__dirname, filePath);
+    res.sendFile(fullPath, {
+        headers: {
+            'Content-Disposition': `attachment; filename="${fileName}"`,  // Atur nama file yang akan diunduh
+        },
+    }, (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error downloading document');
+        } else {
+            console.log('File downloaded successfully');
+        }
+    });
 });
 
 app.listen(process.env.PORT || 3000, () => {
