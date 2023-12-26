@@ -273,9 +273,45 @@ app.delete('/user', async (req, res) => {
     res.redirect('/user');
 });
 
-app.get('/ptps', (req, res) => {
-    const filePath = 'ptps.pdf';
-    const fileName = 'Syarat PTPS.pdf';
+app.get('/ptps_pengumuman', (req, res) => {
+    const filePath = 'Pengumuman.pdf';
+    const fileName = 'Pengumuman PTPS CBN.pdf';
+    const fullPath = path.join(__dirname, filePath);
+    res.sendFile(fullPath, {
+        headers: {
+            'Content-Disposition': `attachment; filename="${fileName}"`,  // Atur nama file yang akan diunduh
+        },
+    }, (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error downloading document');
+        } else {
+            console.log('File downloaded successfully');
+        }
+    });
+});
+
+app.get('/ptps_doc', (req, res) => {
+    const filePath = 'Syarat.docx';
+    const fileName = 'Berkas PTPS CBN.docx';
+    const fullPath = path.join(__dirname, filePath);
+    res.sendFile(fullPath, {
+        headers: {
+            'Content-Disposition': `attachment; filename="${fileName}"`,  // Atur nama file yang akan diunduh
+        },
+    }, (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error downloading document');
+        } else {
+            console.log('File downloaded successfully');
+        }
+    });
+});
+
+app.get('/ptps_pdf', (req, res) => {
+    const filePath = 'Syarat.pdf';
+    const fileName = 'Berkas PTPS CBN.pdf';
     const fullPath = path.join(__dirname, filePath);
     res.sendFile(fullPath, {
         headers: {
