@@ -292,7 +292,7 @@ app.get('/ptps_pengumuman', (req, res) => {
 });
 
 app.get('/ptps_doc', (req, res) => {
-    const filePath = 'Syarat.docx';
+    const filePath = 'Berkas.docx';
     const fileName = 'Berkas PTPS CBN.docx';
     const fullPath = path.join(__dirname, filePath);
     res.sendFile(fullPath, {
@@ -310,7 +310,7 @@ app.get('/ptps_doc', (req, res) => {
 });
 
 app.get('/ptps_pdf', (req, res) => {
-    const filePath = 'Syarat.pdf';
+    const filePath = 'Berkas.pdf';
     const fileName = 'Berkas PTPS CBN.pdf';
     const fullPath = path.join(__dirname, filePath);
     res.sendFile(fullPath, {
