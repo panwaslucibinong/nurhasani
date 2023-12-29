@@ -327,6 +327,13 @@ app.get('/ptps_pdf', (req, res) => {
     });
 });
 
+app.get('/mt', async (req, res) => {
+    res.render('maintenis', {
+        layout: 'layouts/main-layout',
+        title: 'Info',
+    });
+});
+
 app.listen(process.env.PORT || 3000, () => {
     console.clear();
     console.log("Aplikasi Dijalankan");
