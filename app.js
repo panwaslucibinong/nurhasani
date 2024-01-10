@@ -274,8 +274,8 @@ app.delete('/user', async (req, res) => {
 });
 
 app.get('/ptps_pengumuman', (req, res) => {
-    const filePath = 'Pengumuman.pdf';
-    const fileName = 'Pengumuman PTPS CBN.pdf';
+    const filePath = 'PTPS ADM.pdf';
+    const fileName = 'Pengumuman PTPS Lolos Seleksi ADM.pdf';
     const fullPath = path.join(__dirname, filePath);
     res.sendFile(fullPath, {
         headers: {
