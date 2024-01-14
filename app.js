@@ -250,6 +250,13 @@ app.get('/info', async (req, res) => {
     });
 });
 
+app.get('/apep', async (req, res) => {
+    res.render('info/apep', {
+        layout: 'layouts/main-layout',
+        title: 'Apep Rustandi',
+    });
+});
+
 app.get('/user', async (req, res) => {
     const deviceId = req.cookies.deviceId;
     if (!deviceId) {
