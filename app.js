@@ -128,11 +128,19 @@ app.get('/logout', (req, res) => {
 app.get('/user', authenticateUser, async (req, res) => {
     const kodeAktivasi = req.cookies.kode_login;
     const dataUser = await Users.findOne({ kode_login: kodeAktivasi });
+    const jabatanUser = `${dataUser.jabatan} ${dataUser.no_tps} ${dataUser.desa}`
+    const existingLhp = await LaporanHasilPengawasan.findOne({ pelaksana_tugas: dataUser.nama_pengawas, jabatan: jabatanUser});
+    if (existingLhp) {
+        jumlahLaporan = 1
+    }else{
+        jumlahLaporan = 0
+    }
     try {
         res.render('users/profil', {
             layout: 'layouts/main-layout',
             title: 'user',
-            dataUser
+            dataUser,
+            jumlahLaporan
 
         });
     } catch (error) {
@@ -189,9 +197,6 @@ app.get('/info/:desa', authenticateUser, async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-
-
-
 
 // Handle halaman tidak ditemukan
 app.use((req, res) => {
